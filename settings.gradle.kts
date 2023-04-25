@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ClassifyValue"
-include ':app'
+include(":app")
