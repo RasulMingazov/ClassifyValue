@@ -1,4 +1,3 @@
-import com.jeanbernad.classifyvalue.buildsrc.Dependencies
 import com.jeanbernad.classifyvalue.buildsrc.Base
 
 plugins {
@@ -7,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jeanbernad.classifyvalue.theme"
+    namespace = "com.jeanbernad.classifyvalue.stringres"
     compileSdk = Base.compileSDK
 
     defaultConfig {
@@ -33,25 +32,4 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
-    }
-}
-
-dependencies {
-    implementation(Dependencies.Core.coreKtx)
-    implementation(Dependencies.Core.lifecycle)
-
-    implementation(Dependencies.Compose.ui)
-
-    implementation(Dependencies.Android.material)
-
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.extJUnit)
-    androidTestImplementation(Dependencies.Test.composeTestManifest)
-    debugImplementation(Dependencies.Compose.debug)
-    androidTestImplementation(Dependencies.Test.composeUiTest)
 }

@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "ClassifyValue"
 include(":app")
 include(":theme")
-
+include(":core")
+include(":core:stringRes")
