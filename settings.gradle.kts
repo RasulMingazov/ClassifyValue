@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ClassifyValue"
 include(":app")
+include(":theme")
+
