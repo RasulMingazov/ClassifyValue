@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jeanbernad.classifyvalue.theme"
+    namespace = "com.jeanbernad.classifyvalue.core.featureApi"
     compileSdk = Base.compileSDK
 
     defaultConfig {
@@ -15,15 +15,16 @@ android {
         targetSdk = Base.targetSDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -42,16 +43,8 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.Core.coreKtx)
-    implementation(Dependencies.Core.lifecycle)
-
     implementation(Dependencies.Compose.ui)
+    implementation(Dependencies.Compose.activity)
 
-    implementation(Dependencies.Android.material)
-
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.extJUnit)
-    androidTestImplementation(Dependencies.Test.composeTestManifest)
-    debugImplementation(Dependencies.Compose.debug)
-    androidTestImplementation(Dependencies.Test.composeUiTest)
+    implementation(Dependencies.Compose.navigation)
 }
