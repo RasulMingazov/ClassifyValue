@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jeanbernad.classifyvalue.stringres"
+    namespace = "com.jeanbernad.classifyvalue.core.data"
     compileSdk = Base.compileSDK
 
     defaultConfig {
@@ -14,15 +14,16 @@ android {
         targetSdk = Base.targetSDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
