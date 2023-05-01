@@ -1,11 +1,11 @@
-package com.jeanbernad.classifyvalue.navigation.di
+package com.jeanbernad.classifyvalue
 
 import com.jeanbernad.classifyvalue.core.featureApi.FeatureApi
 import com.jeanbernad.classifyvalue.core.presentation.bottom.BottomTab
 import com.jeanbernad.classifyvalue.core.presentation.bottom.BottomTabs
 import com.jeanbernad.classifyvalue.feature.camera.CameraQualifier
 import com.jeanbernad.classifyvalue.feature.paint.PaintQualifier
-import com.jeanbernad.classifyvalue.navigation.AppFeatures
+import com.jeanbernad.classifyvalue.core.presentation.navigation.NavigationFeatures
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,13 +16,13 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 class AppNavigationModule {
 
     @Provides
-    fun provideAppNavigationFeatures(
+    fun provideAppNavigationHost(
         @PaintQualifier
         paintFeatureApi: FeatureApi,
         @CameraQualifier
         cameraFeatureApi: FeatureApi
-    ): AppFeatures =
-        AppFeatures.Features(features = listOf(paintFeatureApi, cameraFeatureApi))
+    ): NavigationFeatures =
+        NavigationFeatures.Items(features = listOf(paintFeatureApi, cameraFeatureApi))
 
     @Provides
     fun provideAppBottomTabs(
