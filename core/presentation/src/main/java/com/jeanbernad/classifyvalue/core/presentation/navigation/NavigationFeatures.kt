@@ -1,4 +1,4 @@
-package com.jeanbernad.classifyvalue.navigation
+package com.jeanbernad.classifyvalue.core.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -6,12 +6,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.jeanbernad.classifyvalue.core.featureApi.FeatureApi
 
-interface AppFeatures {
+interface NavigationFeatures {
 
     @Composable
     fun Bind(modifier: Modifier, navController: NavHostController)
 
-    data class Features(private val features: List<FeatureApi>) : AppFeatures {
+    class Items(private val features: List<FeatureApi>) : NavigationFeatures {
 
         @Composable
         override fun Bind(modifier: Modifier, navController: NavHostController) {
@@ -27,7 +27,7 @@ interface AppFeatures {
         }
     }
 
-    object Preview : AppFeatures {
+    object Preview : NavigationFeatures {
 
         @Composable
         override fun Bind(modifier: Modifier, navController: NavHostController) = Unit

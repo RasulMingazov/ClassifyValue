@@ -48,6 +48,7 @@ android {
 dependencies {
     implementation(project(":theme"))
     implementation(project(":core:stringResources"))
+    implementation(project(":core:featureApi"))
 
     implementation(Dependencies.Core.coreKtx)
     implementation(Dependencies.Core.lifecycle)
