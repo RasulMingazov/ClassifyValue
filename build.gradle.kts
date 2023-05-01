@@ -9,7 +9,6 @@ buildscript {
         classpath(com.jeanbernad.classifyvalue.buildsrc.BuildPlugins.gradle)
         classpath(com.jeanbernad.classifyvalue.buildsrc.BuildPlugins.kotlin)
         classpath(com.jeanbernad.classifyvalue.buildsrc.BuildPlugins.hilt)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
     }
 }
 

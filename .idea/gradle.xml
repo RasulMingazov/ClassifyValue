@@ -18,6 +18,13 @@
             <option value="$PROJECT_DIR$/core/featureApi" />
             <option value="$PROJECT_DIR$/core/presentation" />
             <option value="$PROJECT_DIR$/core/stringResources" />
+            <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/camera" />
+            <option value="$PROJECT_DIR$/feature/camera/presentation" />
+            <option value="$PROJECT_DIR$/feature/cameraApi" />
+            <option value="$PROJECT_DIR$/feature/paint" />
+            <option value="$PROJECT_DIR$/feature/paint/presentation" />
+            <option value="$PROJECT_DIR$/feature/paintApi" />
             <option value="$PROJECT_DIR$/theme" />
           </set>
         </option>
