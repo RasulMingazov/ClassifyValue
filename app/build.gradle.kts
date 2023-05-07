@@ -63,6 +63,9 @@ dependencies {
     implementation(project(":feature:cameraApi"))
     implementation(project(":feature:camera"))
 
+    implementation(project(":feature:digit:data"))
+    implementation(project(":feature:digit:domain"))
+
     implementation(Dependencies.Core.coreKtx)
     implementation(Dependencies.Core.lifecycle)
     implementation(Dependencies.Core.javax)

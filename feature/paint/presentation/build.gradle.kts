@@ -50,6 +50,7 @@ dependencies {
     implementation(project(":core:presentation"))
     implementation(project(":core:featureApi"))
     implementation(project(":core:stringResources"))
+    implementation(project(":feature:digit:domain"))
 
     implementation(Dependencies.Core.coreKtx)
     implementation(Dependencies.Core.lifecycle)

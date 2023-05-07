@@ -2,4 +2,10 @@
 <resources>
     <string name="paint">Paint</string>
     <string name="camera">Camera</string>
+    
+    <string name="draw_a_number">Draw a number</string>
+    <string name="classify">Classify</string>
+    <string name="reset">Reset</string>
+    <string name="probability">Probability</string>
+    <string name="classified_as">Classified as</string>
 </resources>
