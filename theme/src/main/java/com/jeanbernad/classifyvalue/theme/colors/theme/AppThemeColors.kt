@@ -15,7 +15,9 @@ class AppThemeColors(
     private val textColor: Color,
     private val secondTextColor: Color,
     private val bottom: Color,
-    private val border: Color
+    private val border: Color,
+    private val firstMonochrome: Color,
+    private val secondMonochrome: Color,
 ) : ThemeColors {
 
     private var primaryLocal by mutableStateOf(primary)
@@ -28,6 +30,8 @@ class AppThemeColors(
     private var secondTextColorLocal by mutableStateOf(secondTextColor)
     private var bottomLocal by mutableStateOf(bottom)
     private var borderLocal by mutableStateOf(border)
+    private var firstMonochromeLocal by mutableStateOf(firstMonochrome)
+    private var secondMonochromeLocal by mutableStateOf(secondMonochrome)
 
     override fun copy() = AppThemeColors(
         this.primary,
@@ -39,7 +43,9 @@ class AppThemeColors(
         this.textColor,
         this.secondTextColor,
         this.bottom,
-        this.border
+        this.border,
+        this.firstMonochrome,
+        this.secondMonochrome
     )
 
     override fun update(other: ThemeColors) {
@@ -53,6 +59,8 @@ class AppThemeColors(
         secondTextColorLocal = other.secondTextColor()
         bottomLocal = other.bottom()
         borderLocal = other.border()
+        firstMonochromeLocal = other.firstMonochrome()
+        secondMonochromeLocal = other.secondMonochrome()
     }
 
 
@@ -75,5 +83,9 @@ class AppThemeColors(
     override fun bottom() = bottomLocal
 
     override fun border() = borderLocal
+
+    override fun firstMonochrome() = firstMonochromeLocal
+
+    override fun secondMonochrome() = secondMonochromeLocal
 
 }

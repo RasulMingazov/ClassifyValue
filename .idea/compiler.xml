@@ -2,6 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
+      <module name="ClassifyValue.core.feature.digit.api" target="1.8" />
+      <module name="ClassifyValue.core.feature.digit.api.main" target="1.8" />
+      <module name="ClassifyValue.core.feature.digit.api.test" target="1.8" />
       <module name="ClassifyValue.core.stringRes" target="11" />
     </bytecodeTargetLevel>
   </component>

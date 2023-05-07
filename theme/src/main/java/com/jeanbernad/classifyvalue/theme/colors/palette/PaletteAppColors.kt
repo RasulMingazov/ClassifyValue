@@ -17,7 +17,9 @@ class PaletteAppColors : PaletteColors {
         textColor = localColors.black(),
         secondTextColor = localColors.white(),
         bottom = localColors.bottomPink(),
-        border = localColors.grayPurple()
+        border = localColors.grayPurple(),
+        firstMonochrome = localColors.white(),
+        secondMonochrome = localColors.black()
     )
 
     override fun darkMode() = AppThemeColors(
@@ -30,6 +32,8 @@ class PaletteAppColors : PaletteColors {
         textColor = localColors.white(),
         secondTextColor = localColors.black(),
         bottom = localColors.bottomPink(),
-        border = localColors.grayPurple()
+        border = localColors.grayPurple(),
+        firstMonochrome = localColors.black(),
+        secondMonochrome = localColors.white()
     )
 }
