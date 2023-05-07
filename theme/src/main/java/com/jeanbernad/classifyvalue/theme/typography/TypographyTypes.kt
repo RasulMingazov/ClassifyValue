@@ -12,4 +12,8 @@ interface TypographyTypes {
 
     fun text16Bold(): TextStyle
 
+    fun text20Bold(): TextStyle
+
+    fun text24Bold(): TextStyle
+
 }
