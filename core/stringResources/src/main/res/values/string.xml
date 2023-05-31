@@ -2,10 +2,20 @@
 <resources>
     <string name="paint">Paint</string>
     <string name="camera">Camera</string>
-    
+    <string name="gallery">Gallery</string>
+
     <string name="draw_a_number">Draw a number</string>
     <string name="classify">Classify</string>
     <string name="reset">Reset</string>
     <string name="probability">Probability</string>
     <string name="classified_as">Classified as</string>
+
+    <string name="shot_a_photo">Shot a photo</string>
+    <string name="camera_permission_denied">The camera is important for this app. Please grant the permission.</string>
+    <string name="camera_permission_granted">Camera permission granted</string>
+    <string name="grant_permission">Grant permission</string>
+
+    <string name="choose_from_gallery">Choose from gallery</string>
+    <string name="choose">Choose</string>
+
 </resources>

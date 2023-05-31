@@ -1,6 +1,7 @@
 package com.jeanbernad.classifyvalue.buildsrc
 
 object Versions {
+
     const val gradle = "7.2.2"
     const val kotlin = "1.7.0"
 
@@ -17,6 +18,7 @@ object Versions {
         const val activity = "1.6.1"
         const val navigation = "2.6.0-alpha04"
         const val coil = "2.3.0"
+        const val imageCropper = "0.1.1"
     }
 
     object Android {
@@ -44,5 +46,15 @@ object Versions {
     object Dagger {
         const val dagger = "2.44.2"
         const val hiltCompose = "1.0.0"
+    }
+
+    object Camera {
+        const val camera = "1.2.2"
+        const val view = "1.3.0-alpha06"
+        const val camposer = "0.1.0"
+    }
+
+    object Accompanist {
+        const val accompanist = "0.30.1"
     }
 }

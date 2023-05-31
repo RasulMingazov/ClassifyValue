@@ -17,6 +17,7 @@ object Dependencies {
         const val debug = "androidx.compose.ui:ui-tooling:${Versions.Compose.composeUiVersion}"
         const val navigation = "androidx.navigation:navigation-compose:${Versions.Compose.navigation}"
         const val coil = "io.coil-kt:coil-compose:${Versions.Compose.coil}"
+        const val imageCropper = "io.github.mr0xf00:easycrop:${Versions.Compose.imageCropper}"
     }
 
     object Android {
@@ -52,5 +53,18 @@ object Dependencies {
         const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.Dagger.dagger}"
         const val hiltCompose = "androidx.hilt:hilt-navigation-compose:${Versions.Dagger.hiltCompose}"
         const val hilt = "com.google.dagger:hilt-android:${Versions.Dagger.dagger}"
+    }
+
+    object Camera {
+        const val camera = "androidx.camera:camera-camera2:${Versions.Camera.camera}"
+        const val lifecycle = "androidx.camera:camera-lifecycle:${Versions.Camera.camera}"
+        const val view = "androidx.camera:camera-view:${Versions.Camera.view}"
+        const val camposer = "io.github.ujizin:camposer:${Versions.Camera.camposer}"
+        const val cameraxx = "com.github.skgmn:cameraxx-composable:0.7.1"
+    }
+
+    object Accompanist {
+        const val permission = "com.google.accompanist:accompanist-permissions:${Versions.Accompanist.accompanist}"
+
     }
 }

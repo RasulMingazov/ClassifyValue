@@ -63,6 +63,9 @@ dependencies {
     implementation(project(":feature:cameraApi"))
     implementation(project(":feature:camera"))
 
+    implementation(project(":feature:galleryApi"))
+    implementation(project(":feature:gallery"))
+
     implementation(project(":feature:digit:data"))
     implementation(project(":feature:digit:domain"))
 

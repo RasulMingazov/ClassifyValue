@@ -23,8 +23,10 @@ interface RecognizeDigit {
         }
 
         override fun recognize(buffer: ByteBuffer): Pair<Int, Float> {
+            println("TEST_TAG: " + buffer.array().toString())
+
             val assetManager = context.assets
-            val model = loadModelFile(assetManager, "digit_classify_model_2.tflite")
+            val model = loadModelFile(assetManager, "digit_recognition_model.tflite")
             val options = Interpreter.Options()
             options.setUseNNAPI(true)
             val interpreter = Interpreter(model, options)
@@ -37,13 +39,13 @@ interface RecognizeDigit {
 
             val maxindex = result.indices.maxBy { result[it] } ?: -1
 
+            println("TEST_TAG: " + result.map { it.toString() })
+
             return maxindex to result[maxindex]
         }
     }
 
     companion object {
-        private const val PIXEL_VALUE = 1
-        private const val FLOAT_TYPE = 4
         private const val OUTPUT_CLASS = 10
 
     }

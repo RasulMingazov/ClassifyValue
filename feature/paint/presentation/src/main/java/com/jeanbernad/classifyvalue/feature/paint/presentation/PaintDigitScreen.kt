@@ -81,7 +81,7 @@ fun PaintDigitScreenInner(
 
     Scaffold(
         backgroundColor = Color.Transparent,
-        topBar = { TopBar(strResR.string.paint) },
+        topBar = { TopBar(title = strResR.string.paint) },
         content = {
             Column(
                 modifier = modifier

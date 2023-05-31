@@ -6,6 +6,8 @@ import com.jeanbernad.classifyvalue.core.presentation.bottom.BottomTabs
 import com.jeanbernad.classifyvalue.feature.camera.CameraQualifier
 import com.jeanbernad.classifyvalue.feature.paint.PaintQualifier
 import com.jeanbernad.classifyvalue.core.presentation.navigation.NavigationFeatures
+import com.jeanbernad.classifyvalue.feature.gallery.GalleryBottomTab
+import com.jeanbernad.classifyvalue.feature.gallery.GalleryQualifier
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,9 +22,11 @@ class AppNavigationModule {
         @PaintQualifier
         paintFeatureApi: FeatureApi,
         @CameraQualifier
-        cameraFeatureApi: FeatureApi
+        cameraFeatureApi: FeatureApi,
+        @GalleryQualifier
+        galleryFeatureApi: FeatureApi
     ): NavigationFeatures =
-        NavigationFeatures.Items(features = listOf(paintFeatureApi, cameraFeatureApi))
+        NavigationFeatures.Items(features = listOf(paintFeatureApi, cameraFeatureApi, galleryFeatureApi))
 
     @Provides
     fun provideAppBottomTabs(
@@ -30,7 +34,9 @@ class AppNavigationModule {
         paintBottomTab: BottomTab,
         @CameraQualifier
         cameraBottomTab: BottomTab,
+        @GalleryQualifier
+        galleryBottomTab: BottomTab
     ): BottomTabs =
-        BottomTabs.Items(bottomTabs = listOf(paintBottomTab, cameraBottomTab))
+        BottomTabs.Items(bottomTabs = listOf(paintBottomTab, cameraBottomTab, galleryBottomTab))
 
 }

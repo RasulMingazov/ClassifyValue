@@ -26,6 +26,9 @@
             <option value="$PROJECT_DIR$/feature/digit" />
             <option value="$PROJECT_DIR$/feature/digit/data" />
             <option value="$PROJECT_DIR$/feature/digit/domain" />
+            <option value="$PROJECT_DIR$/feature/gallery" />
+            <option value="$PROJECT_DIR$/feature/gallery/presentation" />
+            <option value="$PROJECT_DIR$/feature/galleryApi" />
             <option value="$PROJECT_DIR$/feature/paint" />
             <option value="$PROJECT_DIR$/feature/paint/data" />
             <option value="$PROJECT_DIR$/feature/paint/domain" />

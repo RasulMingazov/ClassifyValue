@@ -50,6 +50,8 @@ dependencies {
     implementation(project(":core:presentation"))
     implementation(project(":core:featureApi"))
     implementation(project(":core:stringResources"))
+    implementation(project(":feature:paint:presentation"))
+    implementation(project(":feature:digit:domain"))
 
     implementation(Dependencies.Core.coreKtx)
     implementation(Dependencies.Core.lifecycle)
@@ -63,7 +65,15 @@ dependencies {
     implementation(Dependencies.Android.animation)
     implementation(Dependencies.Android.drawbox)
 
+    implementation(Dependencies.Camera.camera)
+    implementation(Dependencies.Camera.lifecycle)
+    implementation(Dependencies.Camera.view)
+
+    implementation(Dependencies.Accompanist.permission)
+
     implementation(Dependencies.Compose.navigation)
+
+    implementation(Dependencies.Compose.coil)
 
     implementation(Dependencies.Dagger.hilt)
     kapt(Dependencies.Dagger.hiltCompiler)

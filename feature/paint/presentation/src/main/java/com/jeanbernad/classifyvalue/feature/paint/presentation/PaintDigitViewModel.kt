@@ -22,7 +22,8 @@ interface PaintDigitViewModel {
 
     abstract class Base(
         private val interactor: RecognizeDigitInteractor,
-        private val bitmapToByteBuffer: BitmapToByteBuffer
+        private val bitmapToByteBuffer: BitmapToByteBuffer,
+        private val bitmapThresholdMapper: BitmapThresholdMapper
     ): BaseViewModel(), PaintDigitViewModel {
 
         private val _classified = MutableStateFlow(Pair("", ""))
@@ -31,7 +32,7 @@ interface PaintDigitViewModel {
 
         override fun classify(bitmap: Bitmap) {
             viewModelScope.launch {
-                interactor.recognize(bitmapToByteBuffer.map(bitmap)).onEach {
+                interactor.recognize(bitmapToByteBuffer.map(bitmapThresholdMapper.map(bitmap))).onEach {
                     _classified.emit(it)
                 }.collect()
             }
@@ -45,6 +46,7 @@ interface PaintDigitViewModel {
     @HiltViewModel
     class Item @Inject constructor(
         interactor: RecognizeDigitInteractor,
-        bitmapToByteBuffer: BitmapToByteBuffer
-    ) : Base(interactor, bitmapToByteBuffer)
+        bitmapToByteBuffer: BitmapToByteBuffer,
+        bitmapThresholdMapper: BitmapThresholdMapper
+    ) : Base(interactor, bitmapToByteBuffer, bitmapThresholdMapper)
 }
