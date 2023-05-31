@@ -24,7 +24,7 @@ interface RecognizeDigit {
 
         override fun recognize(buffer: ByteBuffer): Pair<Int, Float> {
             val assetManager = context.assets
-            val model = loadModelFile(assetManager, "digit_classify_model_2.tflite")
+            val model = loadModelFile(assetManager, "digit_recognition_model.tflite")
             val options = Interpreter.Options()
             options.setUseNNAPI(true)
             val interpreter = Interpreter(model, options)

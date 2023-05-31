@@ -1,15 +1,15 @@
 package com.jeanbernad.classifyvalue.feature.paint.presentation
 
-import android.graphics.Bitmap
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -18,7 +18,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,12 +26,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jeanbernad.classifyvalue.core.presentation.button.RoundedButton
 import com.jeanbernad.classifyvalue.core.presentation.button.RoundedDisButton
+import com.jeanbernad.classifyvalue.core.presentation.paint.PaintBox
+import com.jeanbernad.classifyvalue.core.presentation.paint.rememberPaintController
+import com.jeanbernad.classifyvalue.core.presentation.text.SaveText
 import com.jeanbernad.classifyvalue.core.presentation.topbar.TopBar
 import com.jeanbernad.classifyvalue.theme.AppTheme
-import io.ak1.drawbox.DrawBox
-import io.ak1.drawbox.rememberDrawController
+import java.nio.ByteBuffer
 import com.jeanbernad.classifyvalue.core.stringResources.R as strResR
-
 
 @Composable
 fun PaintDigitScreen(
@@ -40,13 +40,14 @@ fun PaintDigitScreen(
     modifier: Modifier,
     navController: NavController
 ) {
-    val value = viewModel.classified().collectAsState()
+    val result =  viewModel.classified().collectAsState()
+
     PaintDigitScreenInner(
-        classifiedAndProbability = value.value,
+        classifiedAndProbability = result.value,
         modifier = modifier,
         navController = navController,
-        classifyCallback = { bitmap ->
-            viewModel.classify(bitmap!!)
+        classifyCallback = { byteBuffer ->
+            viewModel.classify(byteBuffer)
         },
         resetCallback = {
             viewModel.resetClassified()
@@ -71,23 +72,21 @@ fun PaintDigitScreenInner(
     classifiedAndProbability: Pair<String, String>,
     modifier: Modifier,
     navController: NavController,
-    classifyCallback: ((bitmap: Bitmap?) -> Unit),
+    classifyCallback: ((buffer: ByteBuffer) -> Unit),
     resetCallback: (() -> Unit)
 ) {
-    val controller = rememberDrawController()
-    controller.changeColor(AppTheme.colors().secondMonochrome())
-    controller.changeBgColor(AppTheme.colors().firstMonochrome())
-    controller.changeStrokeWidth(AppTheme.dimensions().size48().value)
+    val controller = rememberPaintController()
 
     Scaffold(
         backgroundColor = Color.Transparent,
-        topBar = { TopBar(strResR.string.paint) },
+        topBar = { TopBar(title = strResR.string.paint) },
         content = {
             Column(
                 modifier = modifier
-                    .padding(it),
+                    .padding(it)
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center,
             ) {
                 Text(
                     modifier = modifier.padding(vertical = AppTheme.dimensions().size16()),
@@ -105,13 +104,12 @@ fun PaintDigitScreenInner(
                         .width(width = LocalConfiguration.current.screenHeightDp.dp / 4),
                     shape = RoundedCornerShape(size = AppTheme.dimensions().size12())
                 ) {
-                    DrawBox(
-                        drawController = controller,
-                        bitmapCallback = { bitmap, _ ->
-                            classifyCallback(bitmap!!.asAndroidBitmap())
-                        },
-                        backgroundColor = AppTheme.colors().firstMonochrome(),
-                        modifier = Modifier.fillMaxSize()
+                    PaintBox(
+                        modifier = modifier.fillMaxWidth(),
+                        controller = controller,
+                        background = AppTheme.colors().firstMonochrome(),
+                        paintColor = AppTheme.colors().secondMonochrome(),
+                        paintWidth = AppTheme.dimensions().size32()
                     )
                 }
                 Row(
@@ -131,7 +129,7 @@ fun PaintDigitScreenInner(
                         text = stringResource(id = strResR.string.classified_as) + ":",
                         style = AppTheme.typography().text16Bold(),
                     )
-                    Text(
+                    SaveText(
                         modifier = modifier,
                         text = classifiedAndProbability.first,
                         style = AppTheme.typography().text16Bold(),
@@ -154,7 +152,7 @@ fun PaintDigitScreenInner(
                         text = stringResource(id = strResR.string.probability) + ":",
                         style = AppTheme.typography().text16Bold(),
                     )
-                    Text(
+                    SaveText(
                         modifier = modifier,
                         text = classifiedAndProbability.second,
                         style = AppTheme.typography().text16Bold(),
@@ -173,7 +171,9 @@ fun PaintDigitScreenInner(
                         ),
                     text = strResR.string.classify
                 ) {
-                    controller.saveBitmap()
+                    controller.captureByteBuffer { buffer ->
+                        classifyCallback(buffer)
+                    }
                 }
                 RoundedDisButton(
                     modifier = modifier
@@ -188,8 +188,8 @@ fun PaintDigitScreenInner(
                         ),
                     text = strResR.string.reset
                 ) {
-                    controller.reset()
                     resetCallback()
+                    controller.reset()
                 }
             }
         }
