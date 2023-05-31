@@ -6,6 +6,9 @@
       <module name="ClassifyValue.core.feature.digit.api.main" target="1.8" />
       <module name="ClassifyValue.core.feature.digit.api.test" target="1.8" />
       <module name="ClassifyValue.core.stringRes" target="11" />
+      <module name="ClassifyValue.feature.gallery" target="11" />
+      <module name="ClassifyValue.feature.gallery.presentation" target="11" />
+      <module name="ClassifyValue.feature.galleryApi" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
