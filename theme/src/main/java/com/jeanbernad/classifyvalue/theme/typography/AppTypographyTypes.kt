@@ -30,4 +30,16 @@ class AppTypographyTypes : TypographyTypes {
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp
     )
+
+    override fun text20Bold() = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    )
+
+    override fun text24Bold() = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp
+    )
 }

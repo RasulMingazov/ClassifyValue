@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.jeanbernad.classifyvalue.core.presentation.BaseActivity
 import com.jeanbernad.classifyvalue.core.presentation.bottom.BottomTabs
-import com.jeanbernad.classifyvalue.navigation.AppFeatures
+import com.jeanbernad.classifyvalue.core.presentation.navigation.NavigationFeatures
 import com.jeanbernad.classifyvalue.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +30,7 @@ class MainActivity : BaseActivity() {
                 val appNavigationFeatures = viewModel.navigationFeatures().collectAsState()
                 val bottomTabs = viewModel.bottomTabs().collectAsState()
                 Inner(
-                    appFeatures = appNavigationFeatures.value,
+                    navigationFeatures = appNavigationFeatures.value,
                     bottomTabs = bottomTabs.value
                 )
             }
@@ -41,14 +41,14 @@ class MainActivity : BaseActivity() {
     @Composable
     fun Preview() {
         Inner(
-            appFeatures = AppFeatures.Preview,
+            navigationFeatures = NavigationFeatures.Preview,
             bottomTabs = BottomTabs.Preview
         )
     }
 
     @Composable
     fun Inner(
-        appFeatures: AppFeatures,
+        navigationFeatures: NavigationFeatures,
         bottomTabs: BottomTabs
     ) {
         val navController = rememberNavController()
@@ -65,7 +65,7 @@ class MainActivity : BaseActivity() {
                                 .lightGreen()
                         )
                 ) {
-                    appFeatures.Bind(
+                    navigationFeatures.Bind(
                         modifier = Modifier,
                         navController = navController
                     )

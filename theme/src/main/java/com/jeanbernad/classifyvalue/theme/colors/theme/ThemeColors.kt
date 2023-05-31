@@ -27,5 +27,9 @@ interface ThemeColors {
     fun bottom(): Color
 
     fun border(): Color
-    
+
+    fun firstMonochrome(): Color
+
+    fun secondMonochrome(): Color
+
 }

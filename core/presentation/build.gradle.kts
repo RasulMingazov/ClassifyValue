@@ -4,6 +4,7 @@ import com.jeanbernad.classifyvalue.buildsrc.Base
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -48,6 +49,8 @@ android {
 dependencies {
     implementation(project(":theme"))
     implementation(project(":core:stringResources"))
+    implementation(project(":core:featureApi"))
+    implementation(project(":core"))
 
     implementation(Dependencies.Core.coreKtx)
     implementation(Dependencies.Core.lifecycle)
